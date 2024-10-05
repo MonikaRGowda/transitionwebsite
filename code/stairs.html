@@ -131,18 +131,28 @@
     <img src="stairs.jpeg" usemap="#image-map">
 
     <map name="image-map">
-        <area shape="rect" coords="10,200,200,850" href="#" onclick="showOptions(); return false;">
-        <area shape="rect" coords="419,80,900,750" href="minchu.html">
-        <area shape="rect" coords="1013,200,1500,850" href="right.html">
-        <area shape="rect" coords="10,200,200,850" href="left.html">
+        <area shape="rect" coords="10,200,200,850" href="#" onclick="showModal1(); return false;">
+        <area shape="rect" coords="1013,200,1500,850" href="#" onclick="showModal2(); return false;">
+        <area shape="rect" coords="650,80,850,750" href="minchu.html">
+        <area shape="rect" coords="520,80,600,750" href="library.html">
     </map>
 
-    <!-- Modal for Options -->
-    <div id="myModal" class="modal">
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Select Department</h2>
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Select Department (Left)</h2>
             <a href="left.html">ECE</a>
+            <a href="csedept.html">CSE</a>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Select Department (Right)</h2>
+            <a href="right.html">Electrical Engineering</a>
             <a href="csedept.html">CSE</a>
         </div>
     </div>
@@ -152,28 +162,38 @@
     </footer>
 
     <script>
+        // Go back function
         function goBack() {
             window.history.back();
         }
 
-        // Show modal with options
-        function showOptions() {
-            document.getElementById("myModal").style.display = "block";
+        // Show Modal 1
+        function showModal1() {
+            document.getElementById("modal1").style.display = "block";
         }
 
-        // Close the modal
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
+        // Show Modal 2
+        function showModal2() {
+            document.getElementById("modal2").style.display = "block";
+        }
+
+        // Close modal function
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
         }
 
         // Close modal if the user clicks anywhere outside of the modal
         window.onclick = function(event) {
-            var modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
+            var modal1 = document.getElementById("modal1");
+            var modal2 = document.getElementById("modal2");
+            if (event.target == modal1) {
+                modal1.style.display = "none";
+            }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
             }
         }
     </script>
+
 </body>
 </html>
-
