@@ -15,7 +15,7 @@
 
         img {
             width: 100%; /* Full width */
-            height: 100%; /* Full height */
+            height: auto; /* Full height */
             object-fit: cover; /* Maintain aspect ratio and cover the area */
             display: block; /* Remove space below the image */
         }
@@ -33,7 +33,7 @@
     </style>
 </head>
 <body>
-    <img src="vending.jpeg" alt="Clickable Map" usemap="#image-map" >
+    <img src="vending.jpeg" alt="Clickable Map" usemap="#image-map" id="responsive-image" >
 
     <map name="image-map">
         <area shape="rect" href="https://justvend.in/" coords="950,500,1100,1500" alt="Section 1">
@@ -41,5 +41,73 @@
     <footer>
         <p>&copy; Batch of 2027-AIML. All Rights Reserved.</p>
     </footer>
+    <script>
+    function scaleImageMap() {
+        var img = document.getElementById('responsive-image');
+        var width = img.naturalWidth;
+        var height = img.naturalHeight;
+        var areas = document.getElementsByTagName('area');
+
+        // Current image display size
+        var displayWidth = img.clientWidth;
+        var displayHeight = img.clientHeight;
+
+        // Scale factor for the image
+        var xScale = displayWidth / width;
+        var yScale = displayHeight / height;
+
+        // Adjust each area's coordinates based on the scale
+        for (var i = 0; i < areas.length; i++) {
+            var area = areas[i];
+            var coords = area.getAttribute('coords').split(',').map(Number);
+
+            var scaledCoords = coords.map((value, index) => {
+                return index % 2 === 0 ? value * xScale : value * yScale;
+            });
+
+            area.setAttribute('coords', scaledCoords.join(','));
+        }
+    }
+
+    // Run this function when the window is resized
+    window.onload = scaleImageMap;
+    window.onresize = scaleImageMap;
+    
+        // Get the modal and elements to set content
+        var modal = document.getElementById("myModal");
+        var modalTitle = document.getElementById("modal-title");
+        var modalDescription = document.getElementById("modal-description");
+
+        // Function to show the modal with information
+        function showInfo(title, description) 
+        {
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            modal.style.display = "block";
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() 
+        {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) 
+        {
+            if (event.target == modal) 
+            {
+                modal.style.display = "none";
+            }
+        }
+
+        function goBack() 
+        {
+            window.history.back();
+        }
+</script>
 </body>
 </html>
