@@ -15,7 +15,7 @@
 
         img {
             width: 100%; /* Full width */
-            height: 100%; /* Full height */
+            height: auto; /* Full height */
             object-fit: cover; /* Maintain aspect ratio and cover the area */
             display: block; /* Remove space below the image */
         }
@@ -128,16 +128,16 @@
     </button>
 
     <!-- Campus Image Map -->
-    <img src="stairs.jpeg" usemap="#image-map">
+    <img src="stairs.jpeg" usemap="#image-map" id="responsive-image">
 
     <map name="image-map">
-        <area shape="rect" coords="10,200,200,850" href="#" onclick="showModal1(); return false;">
-        <area shape="rect" coords="1100,200,1500,850" href="#" onclick="showModal2(); return false;">
-        <area shape="rect" coords="650,80,850,750" href="minchu.html">
-        <area shape="rect" coords="520,80,600,750" href="library.html">
-        <area shape="rect" coords="900,80,1000,750" href="entranceofrg.html">
+        <area shape="poly" coords="19,1166,498,1443,785,1547,774,2035,21,2262" href="#" onclick="showModal1(); return false;">
+        <area shape="poly" coords="3973,1192,3203,1587,3189,2075,4015,2367" href="#" onclick="showModal2(); return false;">
+        <area shape="rect" coords="1231,1040,2741,1945" href="minchu.html">
+        <area shape="rect" coords="434,1167,833,1541,858,1901,1147,1694,1093,1277" href="leftdown.html">
+        <area shape="rect" coords="3906,1178,2877,1427,2878,1728,3163,1862,3174,1570" href="rightdown.html">
     </map>
-    
+
     <!-- Modal 1 -->
     <div id="modal1" class="modal">
         <div class="modal-content">
@@ -164,6 +164,37 @@
     </footer>
 
     <script>
+        function scaleImageMap() {
+        var img = document.getElementById('responsive-image');
+        var width = img.naturalWidth;
+        var height = img.naturalHeight;
+        var areas = document.getElementsByTagName('area');
+
+        // Current image display size
+        var displayWidth = img.clientWidth;
+        var displayHeight = img.clientHeight;
+
+        // Scale factor for the image
+        var xScale = displayWidth / width;
+        var yScale = displayHeight / height;
+
+        // Adjust each area's coordinates based on the scale
+        for (var i = 0; i < areas.length; i++) {
+            var area = areas[i];
+            var coords = area.getAttribute('coords').split(',').map(Number);
+
+            var scaledCoords = coords.map((value, index) => {
+                return index % 2 === 0 ? value * xScale : value * yScale;
+            });
+
+            area.setAttribute('coords', scaledCoords.join(','));
+        }
+    }
+
+    // Run this function when the window is resized
+    window.onload = scaleImageMap;
+    window.onresize = scaleImageMap;
+    
         // Go back function
         function goBack() {
             window.history.back();
