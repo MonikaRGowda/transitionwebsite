@@ -15,7 +15,7 @@
 
         img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
             display: block;
         }
@@ -106,12 +106,12 @@
         <span class="arrow"></span> Back
     </button>
 
-    <img src="entranceofrg.jpeg" usemap="#image-map">
+    <img src="entranceofrg.jpeg" usemap="#image-map" id="responsive-image">
 
     <map name="image-map">
-        <area shape="rect" href="rg.jpeg" coords="409,400,900,750">
+        <area shape="rect" href="rgright.html" coords="409,400,900,750">
         <area shape="rect" coords="913,450,1200,750" href="#" onclick="showInfo('Drinking water','Free drinking water'); return false;">
-        <area shape="rect" href="vending machine.jpeg" coords="409,400,900,750">
+        <area shape="rect" href="vending.html" coords="409,400,900,750">
     </map>
 
     <!-- The Modal -->
@@ -124,6 +124,38 @@
     </div>
 
     <script>
+         function scaleImageMap() {
+        var img = document.getElementById('responsive-image');
+        var width = img.naturalWidth;
+        var height = img.naturalHeight;
+        var areas = document.getElementsByTagName('area');
+
+        // Current image display size
+        var displayWidth = img.clientWidth;
+        var displayHeight = img.clientHeight;
+
+        // Scale factor for the image
+        var xScale = displayWidth / width;
+        var yScale = displayHeight / height;
+
+        // Adjust each area's coordinates based on the scale
+        for (var i = 0; i < areas.length; i++) {
+            var area = areas[i];
+            var coords = area.getAttribute('coords').split(',').map(Number);
+
+            var scaledCoords = coords.map((value, index) => {
+                return index % 2 === 0 ? value * xScale : value * yScale;
+            });
+
+            area.setAttribute('coords', scaledCoords.join(','));
+        }
+    }
+
+    // Run this function when the window is resized
+    window.onload = scaleImageMap;
+    window.onresize = scaleImageMap;
+    
+
         // Get the modal and elements to set content
         var modal = document.getElementById("myModal");
         var modalTitle = document.getElementById("modal-title");
