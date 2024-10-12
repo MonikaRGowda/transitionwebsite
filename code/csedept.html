@@ -77,16 +77,20 @@
     <map name="image-map">
         <area shape="rect" href="https://uvce.ac.in/computerscience_dept.php" coords="366,545,492,2095" alt="Section 1">
         <area shape="rect" href="leftcor2.html" coords="667,960,848,1396" alt="Section 1">
-        <area shape="rect" href="#" coords="567,960,648,1396" alt="Section 1" onclick=>
-        
+        <area shape="rect" href="#" coords="567,960,648,1396" alt="Section 1" onclick="showInfo('CLASSROOMS', 'Classroom 201 etc. are present here'); return false;">
     </map>
 
-    <footer>
-        <p>&copy; Batch of 2027-AIML. All Rights Reserved.</p>
-    </footer>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
 
     <script>
-         function scaleImageMap() {
+        function scaleImageMap() {
         var img = document.getElementById('responsive-image');
         var width = img.naturalWidth;
         var height = img.naturalHeight;
@@ -116,11 +120,42 @@
     // Run this function when the window is resized
     window.onload = scaleImageMap;
     window.onresize = scaleImageMap;
-    
+
+
+        // Get the modal and elements to set content
+        var modal = document.getElementById("myModal");
+        var modalTitle = document.getElementById("modal-title");
+        var modalDescription = document.getElementById("modal-description");
+
+        // Function to show the modal with information
+        function showInfo(title, description) {
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            modal.style.display = "block";
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
         function goBack() {
             window.history.back();
         }
     </script>
-    
+
+    <footer>
+        <p>&copy; Batch of 2027-AIML. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
