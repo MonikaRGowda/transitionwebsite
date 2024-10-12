@@ -75,8 +75,8 @@
     <img src="left.jpeg" alt="Clickable Map" usemap="#image-map">
 
     <map name="image-map">
-        <area shape="rect" href="https://uvce.ac.in/electronics_dept.php" coords="554,720,1158,3533" alt="Section 1">
-        <area shape="rect" coords="1313,1788,1772,2546" href="csedept.html">
+        <area shape="rect" href="https://uvce.ac.in/electronics_dept.php" coords="254,520,958,2533" alt="Section 1">
+        <area shape="rect" coords="1013,788,1772,1546" href="csedept.html">
             
     </map>
 
@@ -85,6 +85,37 @@
     </footer>
 
     <script>
+        function scaleImageMap() {
+        var img = document.getElementById('responsive-image');
+        var width = img.naturalWidth;
+        var height = img.naturalHeight;
+        var areas = document.getElementsByTagName('area');
+
+        // Current image display size
+        var displayWidth = img.clientWidth;
+        var displayHeight = img.clientHeight;
+
+        // Scale factor for the image
+        var xScale = displayWidth / width;
+        var yScale = displayHeight / height;
+
+        // Adjust each area's coordinates based on the scale
+        for (var i = 0; i < areas.length; i++) {
+            var area = areas[i];
+            var coords = area.getAttribute('coords').split(',').map(Number);
+
+            var scaledCoords = coords.map((value, index) => {
+                return index % 2 === 0 ? value * xScale : value * yScale;
+            });
+
+            area.setAttribute('coords', scaledCoords.join(','));
+        }
+    }
+
+    // Run this function when the window is resized
+    window.onload = scaleImageMap;
+    window.onresize = scaleImageMap;
+    
         function goBack() {
             window.history.back();
         }
