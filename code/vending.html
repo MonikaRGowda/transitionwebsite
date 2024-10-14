@@ -21,9 +21,9 @@
             line-height: 1.6;
         }
 
+       
         /* Back Button */
-        .back-button 
-        {
+        .back-button {
             display: inline-flex;
             align-items: center;
             background-color: #5f3776;
@@ -42,13 +42,11 @@
             z-index: 1000;
         }
 
-        .back-button:hover 
-        {
+        .back-button:hover {
             background-color: #764d9a;
         }
 
-        .back-button .arrow 
-        {
+        .back-button .arrow {
             display: inline-block;
             margin-right: 8px;
             border: solid white;
@@ -57,7 +55,7 @@
             transform: rotate(135deg);
         }
 
-       /* Modal */
+        /* Modal */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
@@ -114,8 +112,7 @@
         }
 
         /* Footer */
-        footer 
-        {
+        footer {
             background-color: #333;
             color: white;
             text-align: center;
@@ -127,6 +124,12 @@
     </style>
 </head>
 <body>
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">
+        <span class="arrow"></span> Back
+    </button>
+
+
     <img src="vending.jpeg" alt="Clickable Map" usemap="#image-map" id="responsive-image" >
 
     <map name="image-map">
