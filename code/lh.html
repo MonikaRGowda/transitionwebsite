@@ -14,10 +14,10 @@
         }
 
         img {
-            width: 100%; /* Full width */
-            height: auto; /* Full height */
-            object-fit: cover; /* Maintain aspect ratio and cover the area */
-            display: block; /* Remove space below the image */
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
         }
 
         /* Back Button */
@@ -109,6 +109,7 @@
             background-color: #764d9a;
         }
 
+
         /* Footer */
         footer {
             background-color: #333;
@@ -127,16 +128,15 @@
         <span class="arrow"></span> Back
     </button>
 
-    <!-- Campus Image Map -->
-    <img src="labsentry.jpeg" usemap="#image-map" id="responsive-image">
+    <img src="lh.jpeg" usemap="#image-map"  id="responsive-image">
 
     <map name="image-map">
-        <area shape="rect" coords="2034,1287,3001,2519" href="#" onclick="showInfo('NCC OFFICE'); return false;">\
-        <area shape="rect" coords="9,5,658,2528" href="#" onclick="showInfo('TO BE CANTEEN'); return false;">
-        <area shape="rect" coords="693,1055,2002,2522" href="labs.html">
-        <area shape="rect" coords="335,2552,3017,4020" href="rgup.html"> 
+        <area shape="rect" href="oat.html" coords="1,868,1208,1646">
+        <area shape="rect" coords="1209,997,2621,1337" href="#" onclick="showInfo('Lecture hall [LH]'); return false;">
+        <area shape="rect" href="rg.html" coords="2661,992,3237,1370">
     </map>
-  <!-- The Modal -->
+
+    <!-- The Modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -144,10 +144,6 @@
             <p id="modal-description"></p>
         </div>
     </div>
-
-    <footer>
-        <p>&copy; Batch of 2027-AIML. All Rights Reserved.</p>
-    </footer>
 
     <script>
         function scaleImageMap() {
@@ -180,13 +176,9 @@
     // Run this function when the window is resized
     window.onload = scaleImageMap;
     window.onresize = scaleImageMap;
-    
-        // Go back function
-        function goBack() {
-            window.history.back();
-        }
 
-       // Get the modal and elements to set content
+
+        // Get the modal and elements to set content
         var modal = document.getElementById("myModal");
         var modalTitle = document.getElementById("modal-title");
         var modalDescription = document.getElementById("modal-description");
@@ -212,7 +204,14 @@
                 modal.style.display = "none";
             }
         }
+
+        function goBack() {
+            window.history.back();
+        }
     </script>
 
+    <footer>
+        <p>&copy; Batch of 2027-AIML. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
