@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background-color:  #5f3776; 
+            background-color: #711010;
     color: white;
     text-align: center;
     padding: 1.5em 0;
@@ -59,7 +59,8 @@ main {
         .back-button {
             display: inline-flex;
             align-items: center;
-            background-color: #5f3776;
+            background-color: #711010;
+            background-color: ;
             color: white;
             padding: 10px 20px;
             font-size: 16px;
@@ -76,7 +77,7 @@ main {
         }
 
         .back-button:hover {
-            background-color: #764d9a;
+            background-color:#925252;
         }
 
         .back-button .arrow {
