@@ -170,7 +170,7 @@
             width: 100%;
             bottom: 0;
         }
-        /* Responsive Design for Mobile */
+       /* Responsive Design for Mobile */
 @media (max-width: 768px) {
     /* Header */
     header {
@@ -213,13 +213,28 @@
 
     /* Image Container */
     .image-container {
+        position: relative;
         width: 100%;
         height: auto;
+        display: flex;
+        justify-content: center;
     }
 
-    .section-image, .background-image, .overlay-image {
+    .background-image,
+    .overlay-image {
+        position: relative; /* Change from absolute to relative */
         width: 100%;
         height: auto;
+        border-radius: 10px;
+        transition: opacity 0.5s ease;
+    }
+
+    .overlay-image {
+        opacity: 1; /* Show the overlay image fully on mobile */
+    }
+
+    .image-container:hover .overlay-image {
+        opacity: 1; /* Maintain overlay visibility on hover */
     }
 
     /* Fun Facts Container */
