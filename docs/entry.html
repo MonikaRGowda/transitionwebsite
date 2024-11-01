@@ -20,6 +20,39 @@
             display: block; /* Remove space below the image */
         }
 
+         /* Back Button */
+         .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #711010;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background-color:#925252;
+        }
+
+        .back-button .arrow {
+            display: inline-block;
+            margin-right: 8px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            padding: 5px;
+            transform: rotate(135deg);
+        }
+        
         /* Footer */
         footer {
             background-color: #333;
@@ -33,11 +66,24 @@
     </style>
 </head>
 <body>
+
+    <!-- Back Button -->
+      <button class="back-button" onclick="goBack()">
+      <span class="arrow"></span> Back
+    </button>
+
     <img src="entry.jpeg" alt="Clickable Map" usemap="#image-map" >
 
     <map name="image-map">
         <area shape="default" href="entrygate.html" alt="Section 1">
     </map>
+
+    <script>
+         function goBack() {
+            window.history.back();
+        }
+    </script>
+
     <footer>
         <p>&copy; Batch of 2027-AIML. All Rights Reserved.</p>
     </footer>
