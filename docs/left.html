@@ -53,6 +53,62 @@
             transform: rotate(135deg);
         }
 
+        /* Modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black background with opacity */
+            padding-top: 100px;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+         /* Close Button */
+         .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #711010;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal a:hover {
+            background-color: #925252;
+        }
+
         /* Footer */
         footer {
             background-color: #333;
@@ -75,10 +131,19 @@
     <img src="left.jpeg" alt="Clickable Map" usemap="#image-map" id="responsive-image">
 
     <map name="image-map">
-        <area shape="rect" href="https://uvce.ac.in/electronics_dept.php" coords="549,730,1083,3605" alt="Section 1">
+        <area shape="rect" coords="549,730,1083,3605" href="#" onclick="showInfo('Electronics and communication engineering department'. 'To know more, visit <a href=\'https://uvce.ac.in/electronics_dept.php/\' target=\'_blank\'>https://uvce.ac.in/electronics_dept.php/</a>'); return false;">
         <area shape="rect" coords="1174,1560,1761,2648" href="csedept.html">
-            
     </map>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
 
     <footer>
         <p>&copy; Batch of 2027-AIML. All Rights Reserved.</p>
@@ -111,15 +176,43 @@
             area.setAttribute('coords', scaledCoords.join(','));
         }
     }
-
-    // Run this function when the window is resized
-    window.onload = scaleImageMap;
+     // Run this function when the window is resized
+     window.onload = scaleImageMap;
     window.onresize = scaleImageMap;
-    
+        // Get the modal and elements to set content
+        var modal = document.getElementById("myModal");
+        var modalTitle = document.getElementById("modal-title");
+        var modalDescription = document.getElementById("modal-description");
+
+        // Function to show the modal with information
+        function showInfo(title, description) {
+            modalTitle.textContent = title;
+            modalDescription.innerHTML = description; // Use innerHTML to render HTML content
+            modal.style.display = "block";
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
         function goBack() {
             window.history.back();
         }
     </script>
+
+    
+
     
 </body>
 </html>
