@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>campus tour</title>
+    <title>Campus Tour</title>
     <style>
         /* Ensure the image is responsive */
         img {
@@ -12,8 +12,7 @@
             object-fit: cover;
             display: block;
         }
-        body 
-        {
+        body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
@@ -21,7 +20,6 @@
             line-height: 1.6;
         }
 
-       
         /* Back Button */
         .back-button {
             display: inline-flex;
@@ -43,7 +41,7 @@
         }
 
         .back-button:hover {
-            background-color:#925252;
+            background-color: #925252;
         }
 
         .back-button .arrow {
@@ -129,68 +127,68 @@
         <span class="arrow"></span> Back
     </button>
 
-
-    <img src="vending.jpeg" alt="Clickable Map" usemap="#image-map" id="responsive-image" >
+    <img src="vending.jpeg" alt="Clickable Map" usemap="#image-map" id="responsive-image">
 
     <map name="image-map">
-        <area shape="rect" href="https://justvend.in/" coords="420,710,507,858" alt="Section 1">
-        <area shape="rect" coords="771,1264,564,341" href="#" onclick="showInfo('K P Guruswamy Office', 'Cultural Head and Associate professor in Electrical Department '); return false;">
+        <area shape="rect" coords="420,710,507,858" href="#" onclick="showInfo('Vending machine', 'To know more, visit <a href=\'https://justvend.in/\' target=\'_blank\'>https://justvend.in/</a>'); return false;">
+        <area shape="rect" coords="771,1264,564,341" href="#" onclick="showInfo('K P Guruswamy Office', 'Cultural Head and Associate professor in Electrical Department'); return false;">
         <area shape="rect" href="rg.html" coords="5,235,368,1122" alt="Section 1">
     </map>
-    
+
+    <!-- The Modal -->
     <div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 id="modal-title"></h2>
-        <p id="modal-description"></p>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
     </div>
-    </div>
-    
+
     <footer>
         <p>&copy; Batch of 2027-AIML. All Rights Reserved.</p>
     </footer>
+
     <script>
-    function scaleImageMap() {
-        var img = document.getElementById('responsive-image');
-        var width = img.naturalWidth;
-        var height = img.naturalHeight;
-        var areas = document.getElementsByTagName('area');
+        function scaleImageMap() {
+            var img = document.getElementById('responsive-image');
+            var width = img.naturalWidth;
+            var height = img.naturalHeight;
+            var areas = document.getElementsByTagName('area');
 
-        // Current image display size
-        var displayWidth = img.clientWidth;
-        var displayHeight = img.clientHeight;
+            // Current image display size
+            var displayWidth = img.clientWidth;
+            var displayHeight = img.clientHeight;
 
-        // Scale factor for the image
-        var xScale = displayWidth / width;
-        var yScale = displayHeight / height;
+            // Scale factor for the image
+            var xScale = displayWidth / width;
+            var yScale = displayHeight / height;
 
-        // Adjust each area's coordinates based on the scale
-        for (var i = 0; i < areas.length; i++) {
-            var area = areas[i];
-            var coords = area.getAttribute('coords').split(',').map(Number);
+            // Adjust each area's coordinates based on the scale
+            for (var i = 0; i < areas.length; i++) {
+                var area = areas[i];
+                var coords = area.getAttribute('coords').split(',').map(Number);
 
-            var scaledCoords = coords.map((value, index) => {
-                return index % 2 === 0 ? value * xScale : value * yScale;
-            });
+                var scaledCoords = coords.map((value, index) => {
+                    return index % 2 === 0 ? value * xScale : value * yScale;
+                });
 
-            area.setAttribute('coords', scaledCoords.join(','));
+                area.setAttribute('coords', scaledCoords.join(','));
+            }
         }
-    }
 
-    // Run this function when the window is resized
-    window.onload = scaleImageMap;
-    window.onresize = scaleImageMap;
-    
+        // Run this function when the window is resized
+        window.onload = scaleImageMap;
+        window.onresize = scaleImageMap;
+
         // Get the modal and elements to set content
         var modal = document.getElementById("myModal");
         var modalTitle = document.getElementById("modal-title");
         var modalDescription = document.getElementById("modal-description");
 
         // Function to show the modal with information
-        function showInfo(title, description) 
-        {
+        function showInfo(title, description) {
             modalTitle.textContent = title;
-            modalDescription.textContent = description;
+            modalDescription.innerHTML = description;  // Use innerHTML to render HTML content
             modal.style.display = "block";
         }
 
@@ -198,24 +196,21 @@
         var span = document.getElementsByClassName("close")[0];
 
         // When the user clicks on <span> (x), close the modal
-        span.onclick = function() 
-        {
+        span.onclick = function() {
             modal.style.display = "none";
         }
 
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) 
-        {
-            if (event.target == modal) 
-            {
+        window.onclick = function(event) {
+            if (event.target == modal) {
                 modal.style.display = "none";
             }
         }
 
-        function goBack() 
-        {
+        function goBack() {
             window.history.back();
         }
-</script>
+    </script>
 </body>
 </html>
+

@@ -12,7 +12,7 @@
             background-color: #ffffff;
             line-height: 1.6;
         }
-         img {
+        img {
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             object-fit: cover; /* Maintain aspect ratio and cover the area */
@@ -51,7 +51,8 @@
             padding: 5px;
             transform: rotate(135deg);
         }
-         /* Modal */
+
+        /* Modal */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
@@ -129,8 +130,8 @@
     <img src="right.jpeg" alt="Clickable Map" usemap="#image-map" id="responsive-image">
 
     <map name="image-map">
-        <area shape="rect"  coords="1828,1015,2368,3119" href="#"  onclick="showInfo('Electrical Department'. 'To know more, visit <a href=\'https://https://uvce.ac.in/electrical_dept.php/\' target=\'_blank\'>https://uvce.ac.in/electrical_dept.php/</a>'); return false;">
-        <area shape="rect" href="#" coords="1168,1527,1745,2547" alt="Section 1" onclick="showInfo('COE ROOMS','Cheif of Examination room'); return false;">
+        <area shape="rect" coords="1828,1015,2368,3119" href="#" onclick="showInfo('Electrical Department', 'To know more, visit <a href=\'https://uvce.ac.in/electrical_dept.php\' target=\'_blank\'>https://uvce.ac.in/electrical_dept.php</a>'); return false;">
+        <area shape="rect" href="#" coords="1168,1527,1745,2547" alt="Section 1" onclick="showInfo('COE ROOMS', 'Chief of Examination room'); return false;">
     </map>
 
     <!-- The Modal -->
@@ -144,36 +145,35 @@
 
     <script>
         function scaleImageMap() {
-        var img = document.getElementById('responsive-image');
-        var width = img.naturalWidth;
-        var height = img.naturalHeight;
-        var areas = document.getElementsByTagName('area');
+            var img = document.getElementById('responsive-image');
+            var width = img.naturalWidth;
+            var height = img.naturalHeight;
+            var areas = document.getElementsByTagName('area');
 
-        // Current image display size
-        var displayWidth = img.clientWidth;
-        var displayHeight = img.clientHeight;
+            // Current image display size
+            var displayWidth = img.clientWidth;
+            var displayHeight = img.clientHeight;
 
-        // Scale factor for the image
-        var xScale = displayWidth / width;
-        var yScale = displayHeight / height;
+            // Scale factor for the image
+            var xScale = displayWidth / width;
+            var yScale = displayHeight / height;
 
-        // Adjust each area's coordinates based on the scale
-        for (var i = 0; i < areas.length; i++) {
-            var area = areas[i];
-            var coords = area.getAttribute('coords').split(',').map(Number);
+            // Adjust each area's coordinates based on the scale
+            for (var i = 0; i < areas.length; i++) {
+                var area = areas[i];
+                var coords = area.getAttribute('coords').split(',').map(Number);
 
-            var scaledCoords = coords.map((value, index) => {
-                return index % 2 === 0 ? value * xScale : value * yScale;
-            });
+                var scaledCoords = coords.map((value, index) => {
+                    return index % 2 === 0 ? value * xScale : value * yScale;
+                });
 
-            area.setAttribute('coords', scaledCoords.join(','));
+                area.setAttribute('coords', scaledCoords.join(','));
+            }
         }
-    }
 
-    // Run this function when the window is resized
-    window.onload = scaleImageMap;
-    window.onresize = scaleImageMap;
-
+        // Run this function when the window is resized
+        window.onload = scaleImageMap;
+        window.onresize = scaleImageMap;
 
         // Get the modal and elements to set content
         var modal = document.getElementById("myModal");
@@ -183,7 +183,7 @@
         // Function to show the modal with information
         function showInfo(title, description) {
             modalTitle.textContent = title;
-            modalDescription.textContent = description;
+            modalDescription.innerHTML = description;  // Use innerHTML to render HTML content
             modal.style.display = "block";
         }
 
@@ -212,3 +212,4 @@
     </footer>
 </body>
 </html>
+
