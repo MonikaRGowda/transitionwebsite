@@ -137,6 +137,7 @@
         <area shape="rect" coords="709,756,869,944" href="#" onclick="showInfo('GIRLS WASHROOM'); return false;">
         <area shape="poly" coords="718,683,722,727,1845,664,1842,401,832,572,726,659" href="#" onclick="showInfo('ECE COMMUNICATION LABS'); return false;">
         <area shape="rect" coords="1321,753,1634,1042" href="#" onclick="showInfo('EEE COMPUTER LABS'); return false;">
+        <area shape="rect" coords="1903,756,2253,1074" href="#" onclick="showModal1(); return false;">"
     </map>
 
     <!-- The Modal -->
@@ -147,6 +148,16 @@
             <p id="modal-description"></p>
         </div>
     </div>
+
+     <!-- Modal 1 -->
+     <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Select Department </h2>
+            <a href="right.html">EEE Department</a>
+        </div>
+    </div>
+
 
     <script>
          function scaleImageMap() {
@@ -185,12 +196,17 @@
         var modal = document.getElementById("myModal");
         var modalTitle = document.getElementById("modal-title");
         var modalDescription = document.getElementById("modal-description");
+        var modal1 = document.getElementById("modal1");
+
 
         // Function to show the modal with information
         function showInfo(title, description) {
             modalTitle.textContent = title;
             modalDescription.textContent = description;
             modal.style.display = "block";
+        }
+        function showModal1() {
+            document.getElementById("modal1").style.display = "block";
         }
 
         // Get the <span> element that closes the modal
@@ -205,6 +221,9 @@
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+            if (event.target == modal1) {
+                modal1.style.display = "none";
             }
         }
 
